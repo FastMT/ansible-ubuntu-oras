@@ -1,0 +1,26 @@
+#####################################################################################
+# Global
+#####################################################################################
+
+- name: Check if oras binary present locally
+  ansible.builtin.stat:
+    path: "{{ oras_install_dir }}/oras"
+    get_checksum: no
+  become: yes
+  register: oras_bin
+
+- name: Download Oras zip archive and extract it if binary not present
+  ansible.builtin.unarchive:
+    src: "{{ oras_url }}"
+    remote_src: yes
+    dest: "{{ oras_install_dir }}"
+    include:
+      - 'oras'
+    keep_newer: no
+    mode: '0755'
+  become: yes
+  register: oras_downloaded
+  until: oras_downloaded is succeeded
+  retries: 5
+  delay: 10
+  when: oras_bin.stat.checksum | default('none') != oras_sha1

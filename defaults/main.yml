@@ -1,0 +1,6 @@
+# Archive with oras binary 
+oras_url: 'https://github.com/oras-project/oras/releases/download/v0.12.0/oras_0.12.0_linux_amd64.tar.gz'
+oras_sha1: 'db8c9ccf9020758c12583c23aa3aea658e6a9326'
+
+# Installation directory
+oras_install_dir: '/usr/local/bin'

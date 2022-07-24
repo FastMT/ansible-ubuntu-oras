@@ -10,7 +10,7 @@ ORAS is cli tool to store any binary files in container registries - https://ora
 Create requirements.yml file
 
 ```
-# Include ubuntu-common role
+# Include ubuntu-oras role
 - src: https://github.com/FastMT/ansible-ubuntu-oras.git
   name: ubuntu-oras
   version: "v1.0.1"

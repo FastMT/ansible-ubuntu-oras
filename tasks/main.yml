@@ -6,7 +6,7 @@
   ansible.builtin.stat:
     path: "{{ oras_install_dir }}/oras"
     get_checksum: no
-  become: yes
+  become: true
   register: oras_bin
 
 - name: Download Oras zip archive and extract it if binary not present
@@ -18,7 +18,7 @@
       - 'oras'
     keep_newer: no
     mode: '0755'
-  become: yes
+  become: true
   register: oras_downloaded
   until: oras_downloaded is succeeded
   retries: 5
